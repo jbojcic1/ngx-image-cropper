@@ -14,6 +14,7 @@
     }
 
     .cropper {
+        touch-action: manipulation;
         position: absolute;
         display: flex;
         color: #53535C !important;
@@ -97,8 +98,8 @@
                 background: inherit;
                 border: 1px solid rgba(255, 255, 255, 0.5);
                 content: '';
-                width: 8px;
-                height: 8px;
+                width: 15px;
+                height: 15px;
                 margin: auto;
                 opacity: .85;
                 z-index: 1;
