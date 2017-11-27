@@ -14,6 +14,7 @@
     }
 
     .cropper {
+        touch-action: manipulation;
         position: absolute;
         display: flex;
         color: #53535C !important;
@@ -102,6 +103,12 @@
                 margin: auto;
                 opacity: .85;
                 z-index: 1;
+
+                @media (-moz-touch-enabled: 1), (pointer:coarse) {
+                    width: 20px;
+                    height: 20px;
+                }
+
             }
         }
         .resize-bar {
