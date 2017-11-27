@@ -98,11 +98,17 @@
                 background: inherit;
                 border: 1px solid rgba(255, 255, 255, 0.5);
                 content: '';
-                width: 20px;
-                height: 20px;
+                width: 8px;
+                height: 8px;
                 margin: auto;
                 opacity: .85;
                 z-index: 1;
+
+                @media (-moz-touch-enabled: 1), (pointer:coarse) {
+                    width: 20px;
+                    height: 20px;
+                }
+
             }
         }
         .resize-bar {
