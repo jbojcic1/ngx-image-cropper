@@ -65,6 +65,7 @@ Everytime you release the mouse, the `imageCropped` event will be triggerd with 
 
 ## API
 ### Inputs
+- `imageFile` - Image file from file input
 - `imageChangedEvent` - The change event from your file input
 - `format` - Output format (png, jpg, gif) (default = png)
 - `maintainAspectRatio` - Keep width and height of cropped image equal according to the aspectRatio (default = true)
