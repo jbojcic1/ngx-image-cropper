@@ -60,12 +60,16 @@ export class ImageCropperComponent {
     @Input()
     set imageChangedEvent(event: any) {
         if (event && event.target && event.target.files) {
-            this.loadImage(event);
+            this.loadImage(event.target.files[0]);
         }
     }
     @Input()
     set imageBase64(imageBase64: string) {
         this.loadBase64Image(imageBase64);
+    }
+    @Input()
+    set imageFile(imageFile: File) {
+        this.loadImage(imageFile);
     }
     @Input() format = 'png';
     @Input() maintainAspectRatio = true;
@@ -76,14 +80,14 @@ export class ImageCropperComponent {
     @Output() imageLoaded = new EventEmitter<void>();
     @Output() loadImageFailed = new EventEmitter<void>();
 
-    loadImage(event: any) {
+    loadImage(file: File) {
         this.imageVisible = false;
         const fileReader = new FileReader();
         fileReader.onload = (ev: any) => {
-            if (event.target.files[0].type === 'image/jpeg' ||
-                event.target.files[0].type === 'image/jpg' ||
-                event.target.files[0].type === 'image/png' ||
-                event.target.files[0].type === 'image/gif') {
+            if (file.type === 'image/jpeg' ||
+                file.type === 'image/jpg' ||
+                file.type === 'image/png' ||
+                file.type === 'image/gif') {
                 this.loadBase64Image(ev.target.result);
             } else {
                 const blank = 'data:image/png;base64,iVBORw0KGg' + 'oAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAU' + 'AAarVyFEAAAAASUVORK5CYII=';
@@ -93,7 +97,7 @@ export class ImageCropperComponent {
                 this.loadImageFailed.emit();
             }
         };
-        fileReader.readAsDataURL(event.target.files[0]);
+        fileReader.readAsDataURL(file);
     }
 
     private loadBase64Image(imageBase64: string) {
